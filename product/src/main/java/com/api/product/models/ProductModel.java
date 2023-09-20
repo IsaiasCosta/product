@@ -16,6 +16,10 @@ public class ProductModel implements Serializable {
     private UUID IdProduct;
     private String name;
     private BigDecimal value;
+    private String description;
+    private String cor;
+
+
 
     // Metodos Gettes e Settes
 
@@ -43,4 +47,20 @@ public class ProductModel implements Serializable {
     public void setValue(BigDecimal value) {
         this.value = value;
     }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+
 }

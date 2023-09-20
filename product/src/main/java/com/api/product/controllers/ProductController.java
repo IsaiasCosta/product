@@ -8,16 +8,20 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin("*")
 public class ProductController {
     // ponto de Injeção
     @Autowired
+
     ProductRepository productRepository;
 
     // Criando o s Metodos CRUD = Create - Read - Update - Delete
@@ -27,6 +31,7 @@ public class ProductController {
       o retorno do status, criando o recurso, retornando no corpo  do recurso os dados do cliente no banco de dados, salvando esses recurso,
       que já foi convertido de DTO paar Model,
     */
+
     @PostMapping("/products")// passo a URI
     public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDto productRecordDto) {
         var productModel = new ProductModel();
@@ -69,5 +74,9 @@ public class ProductController {
         }
         productRepository.delete(productModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body(productModelOptional.get());
+    }
+    @GetMapping("/product")
+     public String nome(){
+        return "API de teste conectada!";
     }
 }
